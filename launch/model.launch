@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<launch>
+  <include file="$(find gazebo_ros)/launch/empty_world.launch"/>
+  <param name="robot_description" textfile="$(find mobile_robot)/urdf/model.urdf" />
+
+  <node name="spawn_urdf" pkg="gazebo_ros"
+        type="spawn_model" output="screen"
+        args="-file $(find mobile_robot)/urdf/model.urdf -urdf -model my_model"/>
+
+  <node pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" name="teleop"/>
+</launch>
